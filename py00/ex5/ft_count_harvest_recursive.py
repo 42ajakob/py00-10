@@ -1,5 +1,7 @@
-def ft_recursive(days: int) -> None:
-    if (days != 0):
+def ft_recursive(days: int = None) -> None:
+    if (days == None)
+        return
+    elif (days != 0):
         ft_recursive(days - 1)
         print("Day", days)
 
