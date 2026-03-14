@@ -1,5 +1,5 @@
 class Plant:
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         self.name = name
         self.height = height
         self.age = age
@@ -7,7 +7,7 @@ class Plant:
 
 class Flower(Plant):
     def __init__(self, name: str, height: int, age: int,
-                 color: str):
+                 color: str) -> None:
         super().__init__(name, height, age)
         self.color = color
         print(f"{name} (Flower): {height}cm, {age} days, {color} color")
@@ -17,11 +17,14 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    def __init__(self, name: str, height: int, age: int, trunk_diameter: int):
+    def __init__(self, name: str, height: int, age: int,
+                 trunk_diameter: int) -> None:
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
-        print(f"{name} (Tree): {height}cm, \
-              {age} days, {trunk_diameter} diameter")
+        print((
+            f"{name} (Tree): {height}cm, "
+            f"{age} days, {trunk_diameter} diameter"
+        ))
 
     def produce_shade(self) -> None:
         print(f"{self.name} provides 78 square meters of shade")
@@ -29,12 +32,15 @@ class Tree(Plant):
 
 class Vegetable(Plant):
     def __init__(self, name: str, height: int, age: int,
-                 harvest_season: str, nutritional_value: str):
+                 harvest_season: str,
+                 nutritional_value: str) -> None:
         super().__init__(name, height, age)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
-        print(f"{name} (Vegetable): {height}cm, \
-              {age} days, {harvest_season} harvest")
+        print((
+            f"{name} (Vegetable): {height}cm, "
+            f"{age} days, {harvest_season} harvest"
+        ))
 
     # Flake8 complains. Otherwise this would be in __init__()
     def nutritions(self) -> None:
