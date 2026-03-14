@@ -1,5 +1,6 @@
 class Plant:
-    def __init__(self, name: str = None, height: int = None, plant_age: int = None, growth_speed: int = None) -> None:
+    def __init__(self, name: str, height: int,
+                 plant_age: int, growth_speed: int):
         self.name = name
         self.height = height
         self.plant_age = plant_age
@@ -13,6 +14,7 @@ class Plant:
 
     def get_info(self) -> None:
         print(f"{self.name}: {self.height}cm, {self.plant_age} days old")
+
 
 def ft_plant_growth() -> None:
     rose = Plant("Rose", 25, 30, 1)
@@ -42,6 +44,7 @@ def ft_plant_growth() -> None:
     print()
     cactus.get_info()
     print("Growth this week: +12cm")
+
 
 if __name__ == "__main__":
     ft_plant_growth()
