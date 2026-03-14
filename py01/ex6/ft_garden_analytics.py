@@ -65,7 +65,8 @@ class GardenManager():
         return instance
 
     @staticmethod
-    def calc_statistics(garden: type[Garden], owners: list[Garden], garden_count: int) -> None:
+    def calc_statistics(garden: type[Garden],
+                        owners: list[Garden], garden_count: int) -> None:
         regularplants = 0
         floweringplants = 0
         prizeflowers = 0
@@ -94,7 +95,6 @@ class GardenManager():
         print(f"Height validation test: {garden.height_validation}")
         print(f"Garden scores - {garden.name}: 218, {owners[1].name}: 92")
         print(f"Total gardens managed: {garden_count}")
-
 
     def GardenStats(self, garden: type[Garden]) -> None:
         print("Plants in garden:")
