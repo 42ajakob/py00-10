@@ -1,5 +1,5 @@
 class Plant:
-    def __init__(self, name: str, height: int):
+    def __init__(self, name: str, height: int) -> None:
         self.name = name
         self.height = height
 
@@ -9,19 +9,21 @@ class Plant:
 
 
 class FloweringPlant(Plant):
-    def __init__(self, name: str, height: int, color: str):
+    def __init__(self, name: str, height: int,
+                 color: str) -> None:
         super().__init__(name, height)
         self.color = color
 
 
 class PrizeFlower(FloweringPlant):
-    def __init__(self, name: str, height: int, color: str, prize_points: int):
+    def __init__(self, name: str, height: int,
+                 color: str, prize_points: int) -> None:
         super().__init__(name, height, color)
         self.prize_points = prize_points
 
 
 class Garden():
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         self.name = name
         self.plants = []
         self.regularplants = 0
@@ -60,7 +62,7 @@ class Garden():
 
 
 class GardenManager():
-    def __init__(self):
+    def __init__(self) -> None:
         self.owners = []
         self.garden_count = 0
 
