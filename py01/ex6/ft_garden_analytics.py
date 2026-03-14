@@ -77,14 +77,14 @@ class GardenManager():
     def GardenStats(self, garden: type[Garden]) -> None:
         print("Plants in garden:")
         for plant in garden.plants:
-            if type(plant) is Plant:
+            if plant.__class__ is Plant:
                 print(f"- {plant.name}: {plant.height}cm")
-            elif type(plant) is FloweringPlant:
+            elif plant.__class__ is FloweringPlant:
                 print((
                     f"- {plant.name}: {plant.height}cm, "
                     f"{plant.color} flowers (blooming)"
                 ))
-            elif type(plant) is PrizeFlower:
+            elif plant.__class__ is PrizeFlower:
                 print((
                     f"- {plant.name}: {plant.height}cm, "
                     f"{plant.color} flowers (blooming), "
@@ -94,7 +94,7 @@ class GardenManager():
         print((
             f"Plants added: "
             f"{(garden.total_plants)}, "
-            f"Total growth: {garden.total_growth}"
+            f"Total growth: {garden.total_growth}cm"
         ))
         print((
             f"Plant types: {garden.regularplants} regular, "
