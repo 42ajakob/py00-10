@@ -26,10 +26,6 @@ class Garden():
     def __init__(self, name: str) -> None:
         self.name = name
         self.plants = []
-        self.regularplants = 0
-        self.floweringplants = 0
-        self.prizeflowers = 0
-        self.total_plants = 0
         self.total_growth = 0
         self.height_validation = True
 
@@ -38,18 +34,12 @@ class Garden():
         if height >= 0 and plant_type == "Plant":
             self.plants.append(Plant(plant_name, height))
             print(f"Added {plant_name} to {self.name}'s garden")
-            self.regularplants += 1
-            self.total_plants += 1
         elif height >= 0 and plant_type == "FloweringPlant":
             self.plants.append(FloweringPlant(plant_name, height, color))
-            self.floweringplants += 1
-            self.total_plants += 1
             print(f"Added {plant_name} to {self.name}'s garden")
         elif height >= 0 and prize_points >= 0 and plant_type == "PrizeFlower":
             self.plants.append(PrizeFlower(plant_name,
                                height, color, prize_points))
-            self.prizeflowers += 1
-            self.total_plants += 1
             print(f"Added {plant_name} to {self.name}'s garden")
         else:
             print("Error. Negative Plant values")
@@ -74,6 +64,38 @@ class GardenManager():
             instance.garden_count += 1
         return instance
 
+    @staticmethod
+    def calc_statistics(garden: type[Garden], owners: list[Garden], garden_count: int) -> None:
+        regularplants = 0
+        floweringplants = 0
+        prizeflowers = 0
+
+        for plant in garden.plants:
+            if plant.__class__ is Plant:
+                regularplants += 1
+            elif plant.__class__ is FloweringPlant:
+                floweringplants += 1
+            elif plant.__class__ is PrizeFlower:
+                prizeflowers += 1
+
+        total_plants = regularplants + floweringplants + prizeflowers
+
+        print((
+            f"Plants added: "
+            f"{(total_plants)}, "
+            f"Total growth: {garden.total_growth}cm"
+        ))
+        print((
+            f"Plant types: {regularplants} regular, "
+            f"{floweringplants} flowering, "
+            f"{prizeflowers} prize flowers"
+        ))
+        print()
+        print(f"Height validation test: {garden.height_validation}")
+        print(f"Garden scores - {garden.name}: 218, {owners[1].name}: 92")
+        print(f"Total gardens managed: {garden_count}")
+
+
     def GardenStats(self, garden: type[Garden]) -> None:
         print("Plants in garden:")
         for plant in garden.plants:
@@ -91,20 +113,7 @@ class GardenManager():
                     f"Prize points: {plant.prize_points}"
                 ))
         print()
-        print((
-            f"Plants added: "
-            f"{(garden.total_plants)}, "
-            f"Total growth: {garden.total_growth}cm"
-        ))
-        print((
-            f"Plant types: {garden.regularplants} regular, "
-            f"{garden.floweringplants} flowering, "
-            f"{garden.prizeflowers} prize flowers"
-        ))
-        print()
-        print(f"Height validation test: {garden.height_validation}")
-        print(f"Garden scores - {garden.name}: 218, {self.owners[1].name}: 92")
-        print(f"Total gardens managed: {self.garden_count}")
+        self.calc_statistics(garden, self.owners, self.garden_count)
 
 
 def ft_garden_analytics() -> None:
