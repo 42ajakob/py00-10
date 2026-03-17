@@ -31,7 +31,10 @@ class SecurePlant:
         return self._age
 
     def get_info(self) -> None:
-        print(f"Current plant: {self._name} ({self._height}cm, {self._age} days)")
+        print((
+            f"Current plant: {self._name} "
+            f"({self._height}cm, {self._age} days)"
+        ))
 
 
 def ft_garden_security() -> None:
