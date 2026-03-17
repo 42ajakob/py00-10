@@ -64,6 +64,25 @@ class GardenManager():
             instance.garden_count += 1
         return instance
 
+    def GardenStats(self, garden: type[Garden]) -> None:
+        print("Plants in garden:")
+        for plant in garden.plants:
+            if plant.__class__ is Plant:
+                print(f"- {plant.name}: {plant.height}cm")
+            elif plant.__class__ is FloweringPlant:
+                print((
+                    f"- {plant.name}: {plant.height}cm, "
+                    f"{plant.color} flowers (blooming)"
+                ))
+            elif plant.__class__ is PrizeFlower:
+                print((
+                    f"- {plant.name}: {plant.height}cm, "
+                    f"{plant.color} flowers (blooming), "
+                    f"Prize points: {plant.prize_points}"
+                ))
+        print()
+        self.calc_statistics(garden, self.owners, self.garden_count)
+
     @staticmethod
     def calc_statistics(garden: type[Garden],
                         owners: list[Garden], garden_count: int) -> None:
@@ -95,25 +114,6 @@ class GardenManager():
         print(f"Height validation test: {garden.height_validation}")
         print(f"Garden scores - {garden.name}: 218, {owners[1].name}: 92")
         print(f"Total gardens managed: {garden_count}")
-
-    def GardenStats(self, garden: type[Garden]) -> None:
-        print("Plants in garden:")
-        for plant in garden.plants:
-            if plant.__class__ is Plant:
-                print(f"- {plant.name}: {plant.height}cm")
-            elif plant.__class__ is FloweringPlant:
-                print((
-                    f"- {plant.name}: {plant.height}cm, "
-                    f"{plant.color} flowers (blooming)"
-                ))
-            elif plant.__class__ is PrizeFlower:
-                print((
-                    f"- {plant.name}: {plant.height}cm, "
-                    f"{plant.color} flowers (blooming), "
-                    f"Prize points: {plant.prize_points}"
-                ))
-        print()
-        self.calc_statistics(garden, self.owners, self.garden_count)
 
 
 def ft_garden_analytics() -> None:
