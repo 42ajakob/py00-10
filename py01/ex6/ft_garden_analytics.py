@@ -42,7 +42,7 @@ class Garden():
                                height, color, prize_points))
             print(f"Added {plant_name} to {self.name}'s garden")
         else:
-            print("Error. Negative Plant values")
+            print("Error. Negative Plant values or wrong Plant type")
 
     def help_grow_all(self) -> None:
         print(f"{self.name} is helping all plants grow...")
