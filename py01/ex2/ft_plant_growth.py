@@ -6,10 +6,10 @@ class Plant:
         self.plant_age = plant_age
         self.growth_speed = growth_speed
 
-    def age(self) -> int:
+    def age(self) -> None:
         self.plant_age += 1
 
-    def grow(self) -> int:
+    def grow(self) -> None:
         self.height += self.growth_speed
 
     def get_info(self) -> None:
