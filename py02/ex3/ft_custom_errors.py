@@ -1,35 +1,48 @@
 class GardenError(Exception):
-    pass
+    def __init__(self, message="Unknown garden error"):
+        Exception.__init__(self, message)
 
 
 class PlantError(GardenError):
-    pass
+    def __init__(self, message="Unknown plant error"):
+        GardenError.__init__(self, message)
 
 
 class WaterError(GardenError):
-    pass
+    def __init__(self, message="Unknown water error"):
+        GardenError.__init__(self, message)
+
+
+def ft_raise_plant_error() -> None:
+    raise PlantError("The tomato plant is wilting!")
+
+
+def ft_raise_water_error() -> None:
+    raise WaterError("Not enough water in the tank!")
 
 
 def test_exceptions() -> None:
     print("=== Custom Garden Errors Demo ===")
     print()
+    print("Testing PlantError...")
 
     try:
-        print("Testing PlantError...")
-        raise PlantError("The tomato plant is wilting!")
+        ft_raise_plant_error()
     except PlantError as e:
         print(f"Caught PlantError: {e}")
+
     print()
+    print("Testing WaterError...")
 
     try:
-        print("Testing WaterError...")
-        raise WaterError("Not enough water in the tank!")
+        ft_raise_water_error()
     except WaterError as e:
         print(f"Caught WaterError: {e}")
+
     print()
+    print("Testing catching all garden errors...")
 
     try:
-        print("Testing catching all garden errors...")
         raise PlantError("The tomato plant is wilting!")
     except GardenError as e:
         print(f"Caught a garden error: {e}")

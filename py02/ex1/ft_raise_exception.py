@@ -1,12 +1,17 @@
 def input_temperature(temp_str: str) -> int:
-    return int(temp_str)
+    temp_int = int(temp_str)
+    if temp_int > 40:
+        raise ValueError(f"{temp_str}°C is too hot for plants (max 40°C)")
+    elif temp_int < 0:
+        raise ValueError(f"{temp_str}°C is too cold for plants (min 0°C)")
+    return temp_int
 
 
 def test_temperature() -> None:
     print("=== Garden Temperature Checker ===")
     print()
 
-    temps = ["25", "abc"]
+    temps = ["25", "abc", "100", "-50"]
     for temp in temps:
         print(f"Input data is '{temp}'")
         try:
