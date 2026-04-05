@@ -1,73 +1,92 @@
 class Plant:
-    def __init__(self, name: str, height: int, age: int) -> None:
+    def __init__(self, name: str, height: float, plant_age: int):
         self.name = name
         self.height = height
-        self.age = age
+        self.plant_age = plant_age
+
+    def show(self) -> None:
+        print(f"{self.name}: {self.height:.1f}cm, {self.plant_age} days old")
 
 
 class Flower(Plant):
-    def __init__(self, name: str, height: int, age: int,
-                 color: str) -> None:
-        super().__init__(name, height, age)
+    def __init__(self, name: str, height: float, plant_age: int, color: str):
+        super().__init__(name, height, plant_age)
         self.color = color
-        print(f"{name} (Flower): {height}cm, {age} days, {color} color")
+        self.blooming = False
+
+    def show(self) -> None:
+        super().show()
+        print(f" Color: {self.color}")
+        if self.blooming is True:
+            print(f" {self.name} is blooming beautifully!")
+        else:
+            print(f" {self.name} has not bloomed yet")
 
     def bloom(self) -> None:
-        print(f"{self.name} is blooming beautifully!")
+        self.blooming = True
 
 
 class Tree(Plant):
-    def __init__(self, name: str, height: int, age: int,
-                 trunk_diameter: int) -> None:
-        super().__init__(name, height, age)
+    def __init__(self, name: str, height: float,
+                 plant_age: int, trunk_diameter: float):
+        super().__init__(name, height, plant_age)
         self.trunk_diameter = trunk_diameter
-        print((
-            f"{name} (Tree): {height}cm, "
-            f"{age} days, {trunk_diameter} diameter"
-        ))
+
+    def show(self) -> None:
+        super().show()
+        print(f" Trunk diameter: {self.trunk_diameter:.1f}cm")
 
     def produce_shade(self) -> None:
-        print(f"{self.name} provides 78 square meters of shade")
+        print(f"Tree {self.name} now produces a shade of "
+              f"{self.height:.1f}cm long and "
+              f"{self.trunk_diameter:.1f}cm wide.")
 
 
 class Vegetable(Plant):
-    def __init__(self, name: str, height: int, age: int,
-                 harvest_season: str,
-                 nutritional_value: str) -> None:
-        super().__init__(name, height, age)
+    def __init__(self, name: str, height: float,
+                 plant_age: int, harvest_season: str):
+        super().__init__(name, height, plant_age)
         self.harvest_season = harvest_season
-        self.nutritional_value = nutritional_value
-        print((
-            f"{name} (Vegetable): {height}cm, "
-            f"{age} days, {harvest_season} harvest"
-        ))
+        self.nutritional_value = 0
 
-    # Flake8 complains. Otherwise this would be in __init__()
-    def nutritions(self) -> None:
-        print(f"{self.name} is rich in {self.nutritional_value}")
+    def show(self) -> None:
+        super().show()
+        print(f" Harvest season: {self.harvest_season}")
+        print(f" Nutritional value: {self.nutritional_value}")
+
+    def age(self, age_rate: int) -> None:
+        self.plant_age += age_rate
+
+    def grow(self, growth_rate: float) -> None:
+        self.height += growth_rate
+        self.nutritional_value += 1
 
 
 def ft_plant_types() -> None:
     print("=== Garden Plant Types ===")
-    print()
-    rose = Flower("Rose", 25, 30, "red")
+    print("=== Flower")
+    rose = Flower("Rose", 15, 10, "red")
+    rose.show()
+    print("[asking the rose to bloom]")
     rose.bloom()
+    rose.show()
     print()
-    oak = Tree("Oak", 500, 1825, 50)
+
+    print("=== Tree")
+    oak = Tree("Oak", 200, 365, 5)
+    oak.show()
+    print("[asking the oak to produce shade]")
     oak.produce_shade()
     print()
-    tomato = Vegetable("Tomato", 80, 90, "summer", "vitamin C")
-    tomato.nutritions()
-    print()
-    print()
-    sunflower = Flower("Sunflower", 80, 45, "yellow")
-    sunflower.bloom()
-    print()
-    birke = Tree("Birke", 600, 2000, 60)
-    birke.produce_shade()
-    print()
-    carrot = Vegetable("Carrot", 200, 30, "Spring", "vitamin A")
-    carrot.nutritions()
+
+    print("=== Vegetable")
+    tomato = Vegetable("Tomato", 5, 10, "April")
+    tomato.show()
+    print("[make tomato grow and age for 20 days]")
+    for _ in range(20):
+        tomato.grow(2.1)
+        tomato.age(1)
+    tomato.show()
 
 
 if __name__ == "__main__":

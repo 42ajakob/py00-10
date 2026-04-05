@@ -1,51 +1,49 @@
 class SecurePlant:
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, height: float, age: int):
         self._name = name
-        self._height = 0
-        self._age = 0
-        print(f"Plant created: {name}")
+        self._height = height
+        self._age = age
 
-    def set_height(self, height: int) -> None:
-        if (height < 0):
-            print((
-                f"Invalid operation attempted: height "
-                f"{height}cm [REJECTED]"
-            ))
-            print("Security: Negative height rejected")
-        else:
+    def show(self) -> None:
+        print(f"{self._name}: {self._height:.1f}cm, {self._age} days old")
+
+    def set_height(self, height: float) -> None:
+        if (height >= 0):
             self._height = height
-            print(f"Height updated: {self._height}cm [OK]")
+            print(f"Height updated: {self._height}cm")
+        else:
+            print(f"{self._name}: Error, height can't be negative")
+            print("Height update rejected")
 
     def set_age(self, age: int) -> None:
-        if (age < 0):
-            print(f"Invalid operation attempted: age {age}cm [REJECTED]")
-            print("Security: Negative age rejected")
-        else:
+        if (age >= 0):
             self._age = age
-            print(f"Age updated: {self._age} days [OK]")
+            print(f"Age updated: {self._age} days")
+        else:
+            print(f"{self._name}:  Error, age can't be negative")
+            print("Age updated rejected")
 
-    def get_height(self) -> int:
+    def get_height(self) -> float:
         return self._height
 
     def get_age(self) -> int:
         return self._age
 
-    def get_info(self) -> None:
-        print((
-            f"Current plant: {self._name} "
-            f"({self._height}cm, {self._age} days)"
-        ))
-
 
 def ft_garden_security() -> None:
     print("=== Garden Security System ===")
-    rose = SecurePlant("Rose")
+    rose = SecurePlant("Rose", 15, 10)
+    print("Plant created: ", end="")
+    rose.show()
+    print()
     rose.set_height(25)
     rose.set_age(30)
     print()
     rose.set_height(-5)
+    rose.set_age(-5)
     print()
-    rose.get_info()
+    print("Current State: ", end="")
+    rose.show()
 
 
 if __name__ == "__main__":
