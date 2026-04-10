@@ -1,49 +1,14 @@
 from random import randint, sample
 
 
-def gen_player_achievements():
-    # ach_list = ['Crafting Genius', 'Strategist', 'World Savior', 'Speed Runner', 'Survivor',
-    #             'Master Explorer', 'Treasure Hunter', 'Unstoppable', 'First Steps',
-    #             'Collector Supreme', 'Untouchable', 'Sharp Mind', 'Boss Slayer']
-    ach_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
-    num_of_ach = randint(5, 10)
+def gen_player_achievements() -> set:
+    ach_list = ['Boss Slayer', 'Collector Supreme', 'Crafting Genius', 'First Steps',
+                'Master Explorer', 'Sharp Mind', 'Speed Runner', 'Strategist',
+                'Survivor', 'Treasure Hunter', 'Unstoppable', 'Untouchable', 'World Savior']
 
-    indexes = []
-    i = 0
-    while i < len(ach_list):
-        indexes.append(i)
-        i += 1
-
-    random_indexes = sample(indexes, num_of_ach)
-
-    new_list = []
-    i = 0
-    while i < len(random_indexes):
-        new_list.append(ach_list[random_indexes[i]])
-        i += 1
-
-    # manual sort
-    i = 0
-    while i < len(new_list):
-        j = i + 1
-        while j < len(new_list):
-            if new_list[j] < new_list[i]:
-                new_list[i], new_list[j] = new_list[j], new_list[i]
-            j += 1
-        i += 1
-
-    return set(new_list)
-
-# def gen_player_achievements() -> set:
-#     ach_list = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
-
-#     num_of_ach = randint(5, 10)
-#     random_indexes = sample(len(ach_list), num_of_ach)
-
-#     new_list = [ach_list[i] for i in random_indexes]
-#     sort = sorted(new_list)
-#     result_set = set(sort)
-#     return result_set
+    # 42 subject on it's example either has sphagetti code, cheats, or impossible rng
+    # Analyzed this excerise way to much...
+    return set(sample(ach_list, randint(5, 10)))
 
 
 def ft_achievement_tracker() -> None:
