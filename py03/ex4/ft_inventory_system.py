@@ -38,23 +38,26 @@ def ft_inventory_system() -> None:
         print(f"Item {item} represents {quant / total * 100}%")
 
     # Why is sum() allowed but not max(), min()?
-    first_key = list(inv.keys())[0]
-    highest_item = first_key
-    lowest_item = first_key
-    highest_quant = inv[first_key]
-    lowest_quant = inv[first_key]
+    if inv:
+        first_key = list(inv.keys())[0]
+        highest_item = first_key
+        lowest_item = first_key
+        highest_quant = inv[first_key]
+        lowest_quant = inv[first_key]
 
-    for item in inv:
-        quant = inv[item]
-        if quant > highest_quant:
-            highest_item = item
-            highest_quant = quant
-        if quant < lowest_quant:
-            lowest_item = item
-            lowest_quant = quant
+        for item in inv:
+            quant = inv[item]
+            if quant > highest_quant:
+                highest_item = item
+                highest_quant = quant
+            if quant < lowest_quant:
+                lowest_item = item
+                lowest_quant = quant
 
-    print(f"Item most abundant: {highest_item} with quantity {highest_quant}")
-    print(f"Item least abundant: {lowest_item} with quantity {lowest_quant}")
+        print(f"Item most abundant: {highest_item} "
+              "with quantity {highest_quant}")
+        print(f"Item least abundant: {lowest_item} "
+              "with quantity {lowest_quant}")
 
     inv.update({"magic item": 1})
     print(f"Updated inventory: {inv}")
