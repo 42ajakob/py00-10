@@ -2,6 +2,9 @@ from random import randint
 
 
 def ft_data_alchemist() -> None:
+    print("=== Game Data Alchemist ===")
+    print()
+
     player_list = ["Alice", "bob", "Charlie", "dylan",
                    "Emma", "Gregory", "john", "kevin", "Liam"]
     print(f"Initial list of players: {player_list}")
@@ -13,6 +16,8 @@ def ft_data_alchemist() -> None:
     print(f"New list of capitalized names only: {capitalized_only}")
 
     scores = {name.capitalize(): randint(0, 1000) for name in player_list}
+    print()
+    print(f"Score dict: {scores}")
 
     avg = sum(scores.values()) / len(scores)
     print(f"Score average is {avg:.2f}")
