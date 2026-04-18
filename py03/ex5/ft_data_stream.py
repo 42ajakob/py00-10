@@ -2,7 +2,7 @@ from random import choice
 from typing import Generator
 
 
-def gen_event() -> Generator[tuple[str, str]]:
+def gen_event() -> Generator[tuple[str, str], None, None]:
     names = ["alice", "bob", "charlie", "dylan"]
     actions = ["grab", "eat", "move", "run", "swim",
                "climb", "release", "sleep"]
@@ -13,7 +13,7 @@ def gen_event() -> Generator[tuple[str, str]]:
 
 
 def consume_event(tuple_list: list[tuple[str, str]]) \
-                  -> Generator[tuple[str, str]]:
+                  -> Generator[tuple[str, str], None, None]:
     while tuple_list:
         tuple_pair = choice(tuple_list)
         tuple_list.remove(tuple_pair)
