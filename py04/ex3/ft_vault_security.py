@@ -23,19 +23,23 @@ def ft_vault_security() -> None:
     )
 
     print("Using 'secure_archive' to read from a nonexistent file:")
-    print(f"{secure_archive("/not/existing/file", 0, "")}")
+    tuple_output = secure_archive("/not/existing/file", 0, "")
+    print(f"{tuple_output}")
     print()
 
     print("Using 'secure_archive' to read from an inaccessible file:")
-    print(f"{secure_archive("/etc/master.passwd", 0, "")}")
+    tuple_output = secure_archive("/etc/master.passwd", 0, "")
+    print(f"{tuple_output}")
     print()
 
     print("Using 'secure_archive' to read from a regular file:")
-    print(f"{secure_archive("ancient_fragment.txt", 0, "")}")
+    tuple_output = secure_archive("ancient_fragment.txt", 0, "")
+    print(f"{tuple_output}")
     print()
 
     print("Using 'secure_archive' to write previous content to a new file:")
-    print(f"{secure_archive("ancient_fragment.txt", 1, script)}")
+    tuple_output = secure_archive("ancient_fragment.txt", 1, script)
+    print(f"{tuple_output}")
 
 
 if __name__ == "__main__":
