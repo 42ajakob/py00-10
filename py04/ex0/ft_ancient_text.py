@@ -16,7 +16,7 @@ def open_argv() -> None:
 
 
 def ft_ancient_text() -> None:
-    if len(argv) == 1:
+    if len(argv) != 2:
         print("Usage: ft_ancient_text.py <file>")
         return
 

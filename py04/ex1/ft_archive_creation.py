@@ -45,7 +45,7 @@ def write_to_newfile(user_input: str, content: str) -> None:
 
 
 def ft_archive_creation() -> None:
-    if len(argv) == 1:
+    if len(argv) != 2:
         print("Usage: ft_archive_creation.py <file>")
         return
 
