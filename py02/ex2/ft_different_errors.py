@@ -8,7 +8,7 @@ def garden_operations(operation_number: int) -> None:
         # close() is a forbidden function in 42 subject!
         # Too bad!
     elif operation_number == 3:
-        "abc" + 1
+        "abc" + 1  # type: ignore[operator]
     elif operation_number == 4:
         print("Operation completed successfully")
 
