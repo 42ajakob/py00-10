@@ -1,7 +1,7 @@
 # py00-09
 .mypy_cache/
 
-# py00
+# py00, py06
 __pycache__/
 # py04
 *.txt
