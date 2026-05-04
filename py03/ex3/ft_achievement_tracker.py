@@ -1,7 +1,7 @@
 from random import randint, sample
 
 
-def gen_player_achievements() -> set:
+def gen_player_achievements() -> set[str]:
     ach_list = ['Boss Slayer', 'Collector Supreme', 'Crafting Genius',
                 'First Steps', 'Master Explorer', 'Sharp Mind', 'Speed Runner',
                 'Strategist', 'Survivor', 'Treasure Hunter', 'Unstoppable',

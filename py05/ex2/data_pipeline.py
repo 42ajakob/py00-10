@@ -9,7 +9,7 @@ def _is_dict_str(d: Any) -> TypeGuard[dict[str, str]]:
 
 
 class DataProcessor(ABC):
-    def __init__(self):
+    def __init__(self) -> None:
         self.values: list[tuple[int, str]] = []
         self.processed = 0
 
@@ -89,7 +89,7 @@ class LogProcessor(DataProcessor):
 
 
 class DataStream():
-    def __init__(self):
+    def __init__(self) -> None:
         self.proc_list: list[DataProcessor] = []
 
     def register_processor(self, proc: DataProcessor) -> None:

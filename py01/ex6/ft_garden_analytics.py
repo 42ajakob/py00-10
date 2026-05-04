@@ -1,6 +1,6 @@
 class Plant:
     class Stats:
-        def __init__(self):
+        def __init__(self) -> None:
             self._grow_calls = 0
             self._age_calls = 0
             self._show_calls = 0

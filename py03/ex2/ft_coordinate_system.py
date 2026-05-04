@@ -1,7 +1,7 @@
 from math import sqrt
 
 
-def get_player_pos() -> tuple:
+def get_player_pos() -> tuple[float, float, float]:
     while True:
         try:
             coord_input = input("Enter new coordinates "
@@ -18,8 +18,8 @@ def get_player_pos() -> tuple:
             if count != 3:
                 print("Invalid syntax")
                 continue
-            coords = tuple(float(coord.strip()) for coord in coord_list)
-            return coords
+            x, y, z = (float(coord.strip()) for coord in coord_list)
+            return x, y, z
         except ValueError as e:
             bad_value = str(e).split("'")[1]
             print(f"Error on parameter '{bad_value}': {e}")
