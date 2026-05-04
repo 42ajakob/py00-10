@@ -5,3 +5,10 @@
 __pycache__/
 # py04
 *.txt
+
+# py08
+matrix_env/
+matrix_analysis.png
+poetry.lock
+!requirements.txt
+.env
