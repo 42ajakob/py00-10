@@ -96,7 +96,6 @@ class DataStream():
         self.proc_list.append(proc)
 
     def process_stream(self, stream: list[Any]) -> None:
-        print("== DataStream statistics ==")
         for data in stream:
             processed = False
             for proc in self.proc_list:
@@ -110,6 +109,7 @@ class DataStream():
                 )
 
     def print_processors_stats(self) -> None:
+        print("== DataStream statistics ==")
         if not self.proc_list:
             print("No processor found, no data")
         else:
@@ -121,7 +121,7 @@ class DataStream():
                 elif proc.__class__ == LogProcessor:
                     print("Log Processor: ", end="")
                 print(
-                    f"total {proc.processed} processed, "
+                    f"total {proc.processed} items processed, "
                     f"remaining {len(proc.values)} on processor"
                 )
         print()
@@ -133,7 +133,6 @@ def data_processor() -> None:
 
     print("Initialize Data Stream...")
     stream = DataStream()
-    print("== DataStream statistics ==")
     stream.print_processors_stats()
 
     print("Registering Numeric Processor")

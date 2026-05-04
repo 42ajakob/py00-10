@@ -128,7 +128,7 @@ class DataStream():
                 elif proc.__class__ == LogProcessor:
                     print("Log Processor: ", end="")
                 print(
-                    f"total {proc.processed} processed, "
+                    f"total {proc.processed} items processed, "
                     f"remaining {len(proc.values)} on processor"
                 )
         print()
@@ -206,7 +206,7 @@ def data_processor() -> None:
             {'log_level': 'ERROR',
              'log_message': '500 server crash'},
             {'log_level': 'NOTICE',
-             'log_message': 'Certificateexpires in 10 days'}
+             'log_message': 'Certificate expires in 10 days'}
         ],
         [32, 42, 64, 84, 128, 168],
         'World hello'

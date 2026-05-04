@@ -135,7 +135,7 @@ def data_processor() -> None:
 
     log_data = [
         {'log_level': 'NOTICE', 'log_message': 'Connection to server'},
-        {'log_level': 'ERROR ', 'log_message': 'Unauthorized access!!'}
+        {'log_level': 'ERROR', 'log_message': 'Unauthorized access!!'}
     ]
     print(f" Processing data: {log_data}")
     logProc.ingest(log_data)
