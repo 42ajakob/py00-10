@@ -1,5 +1,5 @@
 from os import getenv, path
-from dotenv import load_dotenv
+from dotenv import load_dotenv  # type: ignore[import-not-found]
 
 load_dotenv()
 
@@ -35,36 +35,46 @@ def display_status() -> None:
     print("Configuration loaded:")
 
     # Mode
-    mode = config["MATRIX_MODE"]
-    if mode and mode in ("development", "production"):
-        print(f"Mode: {mode}")
-    else:
+    try:
+        mode = config["MATRIX_MODE"]
+        if mode and mode in ("development", "production"):
+            print(f"Mode: {mode}")
+    except Exception:
         print("ERROR: set MATRIX_MODE=development or production")
         print()
         return
 
     # Database
-    url = config['DATABASE_URL']
-    if url:
+    try:
+        url = config['DATABASE_URL']
         if mode == "production":
             print("Database: Connected to production instance")
         else:
             print(f"Database: Connected to {url} instance")
+    except Exception:
+        pass
 
     # API
-    if config['API_KEY']:
-        if mode == "production":
-            print("API Access: Authenticated for productivity")
-        else:
-            print("API Access: Authenticated")
+    try:
+        if config['API_KEY']:
+            if mode == "production":
+                print("API Access: Authenticated for productivity")
+            else:
+                print("API Access: Authenticated")
+    except Exception:
+        pass
 
     # Log level
-    if config['LOG_LEVEL']:
+    try:
         print(f"Log Level: {config['LOG_LEVEL']}")
+    except Exception:
+        pass
 
     # Zion endpoint
-    if config['ZION_ENDPOINT']:
+    try:
         print(f"Zion Network: {config['ZION_ENDPOINT']}")
+    except Exception:
+        pass
 
     # Security check
     print()
