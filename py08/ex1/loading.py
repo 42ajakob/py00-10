@@ -2,9 +2,22 @@ import sys
 from importlib import import_module
 
 
+def detect_package_manager() -> str:
+    if "pypoetry" in sys.prefix.lower():
+        return "poetry"
+    try:
+        open("poetry.lock").close()
+        return "poetry"
+    except FileNotFoundError:
+        pass
+    return "pip"
+
+
 def check_dependencies() -> list[str]:
+    # Thanks subject for saying but not showing in example that we need it
+    manager = detect_package_manager()
     print()
-    print("LOADING STATUS: Loading programs...")
+    print(f"LOADING STATUS: Loading programs... [package manager: {manager}]")
     dependencies = ["pandas", "numpy", "matplotlib"]
     missing = []
     print()
